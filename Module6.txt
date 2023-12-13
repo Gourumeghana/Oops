@@ -1,0 +1,220 @@
+9>package admission;
+
+public interface EligibilityCriteria {
+    boolean isEligible(int mathsMarks, int physicsMarks, int chemistryMarks, int englishMarks);
+}
+
+public class Student {
+    private String name;
+    private int mathsMarks;
+    private int physicsMarks;
+    private int chemistryMarks;
+    private int englishMarks;
+
+    public Student(String name, int mathsMarks, int physicsMarks, int chemistryMarks, int englishMarks) {
+        this.name = name;
+        this.mathsMarks = mathsMarks;
+        this.physicsMarks = physicsMarks;
+        this.chemistryMarks = chemistryMarks;
+        this.englishMarks = englishMarks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMathsMarks() {
+        return mathsMarks;
+    }
+
+    public int getPhysicsMarks() {
+        return physicsMarks;
+    }
+
+    public int getChemistryMarks() {
+        return chemistryMarks;
+    }
+
+    public int getEnglishMarks() {
+        return englishMarks;
+    }
+}
+
+public class AdmissionSystem {
+    private EligibilityCriteria eligibilityCriteria;
+
+    public AdmissionSystem(EligibilityCriteria eligibilityCriteria) {
+        this.eligibilityCriteria = eligibilityCriteria;
+    }
+
+    public void processApplications(Student[] students) {
+        System.out.println("Eligible Students:");
+        for (Student student : students) {
+            if (eligibilityCriteria.isEligible(student.getMathsMarks(), student.getPhysicsMarks(),
+                    student.getChemistryMarks(), student.getEnglishMarks())) {
+                System.out.println(student.getName());
+            }
+        }
+    }
+}
+---****----
+8>package com.example.reservation;
+
+public interface ReservationCost {
+    double totalFare(Passenger[] passengers);
+}
+
+class Reservation implements ReservationCost {
+    @Override
+    public double totalFare(Passenger[] passengers) {
+        double totalFare = 0;
+        
+        for (Passenger passenger : passengers) {
+            if (passenger instanceof Child) {
+                totalFare += 0; // Fare for children is zero
+            } else if (passenger instanceof Student) {
+                totalFare += passenger.getActualFare() * 0.7; // 30% discount for students
+            } else if (passenger instanceof SeniorCitizen) {
+                totalFare += passenger.getActualFare() * 0.5; // 50% discount for senior citizens
+            } else if (passenger instanceof Citizen) {
+                totalFare += passenger.getActualFare(); // No discount for citizens
+            }
+        }
+        
+        return totalFare;
+    }
+}
+
+class Passenger {
+    private double actualFare;
+
+    public Passenger(double actualFare) {
+        this.actualFare = actualFare;
+    }
+
+    public double getActualFare() {
+        return actualFare;
+    }
+}
+
+class Child extends Passenger {
+    public Child() {
+        super(0); // Fare for children is zero
+    }
+}
+
+class Student extends Passenger {
+    public Student(double actualFare) {
+        super(actualFare);
+    }
+}
+
+class SeniorCitizen extends Passenger {
+    public SeniorCitizen(double actualFare) {
+        super(actualFare);
+    }
+}
+
+class Citizen extends Passenger {
+    public Citizen(double actualFare) {
+        super(actualFare);
+    }
+}
+----****----
+7>package TVRemote;
+
+public interface Remote {
+    void switchOn();
+    void switchOff();
+    void starSportsChannel();
+    void ngcChannel();
+    void discoveryChannel();
+    void starMoviesChannel();
+}
+
+public class TV implements Remote {
+    private boolean isOn;
+
+    public TV() {
+        isOn = false;
+    }
+
+    @Override
+    public void switchOn() {
+        isOn = true;
+        System.out.println("Welcome to TATA SKY");
+    }
+
+    @Override
+    public void switchOff() {
+        isOn = false;
+    }
+
+    @Override
+    public void starSportsChannel() {
+        if (isOn) {
+            System.out.println("Playing Star Sports Channel");
+        }
+    }
+
+    @Override
+    public void ngcChannel() {
+        if (isOn) {
+            System.out.println("Playing NGC Channel");
+        }
+    }
+
+    @Override
+    public void discoveryChannel() {
+        if (isOn) {
+            System.out.println("Playing Discovery Channel");
+        }
+    }
+
+    @Override
+    public void starMoviesChannel() {
+        if (isOn) {
+            System.out.println("Playing Star Movies Channel");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        TV tv = new TV();
+        tv.switchOn();
+        tv.starSportsChannel();
+        tv.ngcChannel();
+        tv.discoveryChannel();
+        tv.starMoviesChannel();
+        tv.switchOff();
+    }
+}
+---***---
+6>package M-Seva;
+
+import java.util.Scanner;
+
+public class MSevaSystem {
+    public static void main(String[] args) {
+        System.out.println("Welcome to M-Seva");
+        System.out.println("Please enter your symptoms:");
+
+        Scanner scanner = new Scanner(System.in);
+        String symptoms = scanner.nextLine();
+
+        if (symptoms.contains("Stomach ache") && symptoms.contains("vomiting") && symptoms.contains("low eye sight")) {
+            System.out.println("You may have Acute pancreatitis (AP), Appendicitis (A), Bladder Cancer (BC), or Pancreatic Cancer (PC).");
+        } else if (symptoms.contains("Muscle ache") && symptoms.contains("fever")) {
+            System.out.println("You may have Acute pancreatitis (AP).");
+        } else if (symptoms.contains("fever") && symptoms.contains("fatigue")) {
+            System.out.println("You may have Appendicitis (A) or Pancreatic Cancer (PC).");
+        } else if (symptoms.contains("skin allergy") && symptoms.contains("low bp")) {
+            System.out.println("You may have Bladder Cancer (BC).");
+        } else {
+            System.out.println("Sorry, we couldn't identify the disease based on your symptoms.");
+        }
+    }
+}
+---****---
+

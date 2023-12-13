@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+class Module4_5 {
+    private double balance;
+
+    public Account(double initialBalance) {
+        if (initialBalance > 1000.0) {
+            this.balance = initialBalance;
+        } else {
+            System.out.println("Initial balance should be greater than 1000.0");
+        }
+    }
+
+    public void credit(double amount) {
+        balance += amount;
+    }
+
+    public void debit(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Debit amount exceeded account balance");
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void exit() {
+        System.out.println("Exiting from the individual transaction");
+    }
+}
+
+public class SbiBankApplication {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String branchName, accountNumber;
+        boolean exitApplication = false;
+
+        while (!exitApplication) {
+            System.out.print("Enter branch name: ");
+            branchName = scanner.nextLine();
+
+            System.out.print("Enter account number: ");
+            accountNumber = scanner.nextLine();
+
+            // Perform authorization logic here
+
+            Account account = new Account(0.0);
+
+            // Perform transactions here
+
+            System.out.print("Exit application? (Yes/No): ");
+            String exitChoice = scanner.nextLine();
+
+            if (exitChoice.equalsIgnoreCase("Yes")) {
+                exitApplication = true;
+            }
+        }
+
+        scanner.close();
+    }
+}

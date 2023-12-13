@@ -1,0 +1,153 @@
+5>public class Dog {
+    private String name;
+    private String breed;
+    private String color;
+    private double height;
+    private String type;
+    
+    // Constructors, getters, and other methods will be implemented here
+}
+Dog dog1 = new Dog();
+dog1.setName("Snoopy");
+dog1.setBreed("Pomeranian");
+dog1.setColor("White");
+dog1.setHeight(1.0);
+dog1.setType("Guard");
+
+Dog dog2 = new Dog();
+dog2.setName("Rocky");
+dog2.setBreed("Labrador");
+dog2.setColor("Brown");
+dog2.setHeight(3.0);
+dog2.setType("Sniffer");
+
+Dog dog3 = new Dog();
+dog3.setName("Snowy");
+dog3.setBreed("German Shepherd");
+dog3.setColor("Black");
+dog3.setHeight(4.0);
+dog3.setType("Shepherd");
+public String suggestDog(String desiredBreed, String desiredType, double desiredHeight) {
+    for (Dog dog : kennel) {
+        if (dog.getBreed().equalsIgnoreCase(desiredBreed) &&
+            dog.getType().equalsIgnoreCase(desiredType) &&
+            dog.getHeight() >= desiredHeight) {
+            return dog.getName();
+        }
+    }
+    
+    return "No suitable dog found.";
+}
+----****----
+4>class Car {
+    String company;
+    double mileage;
+    double speed;
+    String color;
+
+    Car() {}
+
+    double getMileage() {
+        return mileage;
+    }
+
+    double getSpeed() {
+        return speed;
+    }
+}
+
+Car car1 = new Car();
+car1.company = "Ford";
+
+Car car2 = new Car();
+car2.company = "Toyota";
+
+Car car3 = new Car();
+car3.company = "Volkswagen";
+----****----
+3>public class TV {
+    private int channel;
+    private int volumeLevel;
+    private boolean on;
+
+    public TV() {
+    }
+
+    public void turnOn() {
+    }
+
+    public void turnOff() {
+    }
+
+    public void setChannel(int newChannel) {
+    }
+
+    public void setVolume(int newVolumeLevel) {
+    }
+
+    public void channelUp() {
+    }
+
+    public void channelDown() {
+    }
+
+    public void volumeUp() {
+    }
+
+    public void volumeDown() {
+    }
+}
+----****----
+2>public class Lamp {
+    private boolean isOn;
+    private String lampType;
+
+    public Lamp(boolean isOn) {
+        this.isOn = isOn;
+    }
+
+    public void turnOn() {
+        System.out.println("On");
+    }
+
+    public void turnOff() {
+        System.out.println("Off");
+    }
+
+    public static void main(String[] args) {
+        Lamp led = new Lamp(true);
+        Lamp halogen = new Lamp(false);
+
+        led.turnOn();
+        led.turnOff();
+
+        halogen.turnOn();
+        halogen.turnOff();
+    }
+}
+---***--
+1>class Circle {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+// Circle Object-1
+Circle circle1 = new Circle(5);
+
+// Circle Object-2
+Circle circle2 = new Circle(10);
+
+// Circle Object-3
+Circle circle3 = new Circle(15);
+---***---
